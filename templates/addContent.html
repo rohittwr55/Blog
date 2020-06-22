@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>
+<html>
+<title>login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+<div class="w3-container  w3-padding-16" >
+  <div class="w3-card-4 w3-padding-16 " style="width:50%" >
+    <form action="addContent" method="post">
+    {% csrf_token %}
+    <text>Upload Image of Place</text><br>
+    <input type="file" name="image1"></input><br><br><hr>
+    <text>Upload Image of Person</text><br>
+    <input type="file" name="image2"></input><br><br><hr>
+    <text>Place Name</text><br>
+    <input type="text" name="place1" value=""><hr>
+    <text>About Place</text><br>
+    <input type="text" name="place2" value=""><hr>
+    <text>Date of visit</text><br>
+    <input type="text" name="date" value=""><hr>
+    <text>Person Name posting it</text><br>
+    <input type="text" name="personname" value=""><hr>
+    <text>Description about place</text><br>
+    <textarea cols="50" rows="5" name="aboutplace" placeholder="description" value="description" required>  </textarea><br><hr>
+    <text>Description about Person</text><br>
+    <textarea cols="50" rows="5" name="aboutperson" placeholder="description" value="description" required>  </textarea><br><hr>
+    <button type="submit">Upload</button>
+  </form>
+  <div>
+  {% for message in messages %}
+    <h3>{{message}}</h3>
+  {% endfor %}
+  </div>
+
+
+
+
+
+</div>
+
+  </div>
+
+
+
+</body>
+</html>-->

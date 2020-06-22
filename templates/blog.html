@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>Blog Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body {background-color: grey;}
+
+h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  {% if user.is_authenticated %}
+    <a href="accounts/logout" class="w3-bar-item w3-button" >Logout</a>
+    <!--<a href="#" class="w3-bar-item w3-button">About us</a>
+    <a href="#" class="w3-bar-item w3-button">Contact us</a>
+    <a href="userPost/addContent" class="w3-bar-item w3-button">Add Content</a>-->
+  {% else %}
+    <a href="accounts/login" class="w3-bar-item w3-button" >Login</a>
+    <a href="accounts/register" class="w3-bar-item w3-button">Register</a>
+    <!--<a href="#" class="w3-bar-item w3-button">About us</a>
+    <a href="#" class="w3-bar-item w3-button">Contact us</a>-->
+  {% endif %}
+</div>
+
+<div id="main">
+
+<div class="w3-container">
+  <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <header class="w3-container w3-center w3-padding-32">
+    <h1><b>MY BLOG</b></h1>
+    <p>Welcome to the blog of Rohit Tiwari</p>
+    {% if user.is_authenticated %}
+      <p>Hello Mr {{user.first_name}}</p>
+    {% endif %}
+  </header>
+
+</div>
+
+
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+{% for dest in dests %}
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="{{dest.img.url}}" alt="Nature" style="width:100%">
+    <div class="w3-container">
+      <h3><b>{{dest.place}}</b></h3>
+      <h5>{{dest.about}} <span class="w3-opacity">{{dest.time}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>{{dest.description}}</p>
+
+    </div>
+  </div>
+
+<!-- END BLOG ENTRIES -->
+</div>
+
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Us -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="{{dest.personphoto.url}}" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>{{dest.personName}}</b></h4>
+      <p>{{dest.personDescription}}</p>
+    </div>
+  </div>
+
+  <!-- Posts -->
+
+</div>
+{% endfor %}
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+
+
+</body>
+</html>
